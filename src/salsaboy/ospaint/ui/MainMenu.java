@@ -32,6 +32,10 @@ public class MainMenu {
             centerX(newProject),
             200
         );
+        newProject.addActionListener(e -> {
+            Variables.frame.dispose();
+            new CreateDrawing();
+        });
         Variables.frame.add(newProject);
         
         Variables.frame.setSize(600, 371);  //Odd number from Golden Ratio. Don't judge.
