@@ -6,13 +6,41 @@ import java.awt.*;
 
 public class CreateDrawing extends JFrame {
     private JTextField fileName = new JTextField();
+    private ButtonGroup format = new ButtonGroup();
+    private JPanel formatPanel = new JPanel();
+    private JRadioButton png = new JRadioButton("PNG");
+    private JRadioButton jpeg = new JRadioButton("JPEG");
+    private JRadioButton gif = new JRadioButton("GIF");
+    private JRadioButton osp = new JRadioButton("OSP");
+    
+    private void makeFormatPanel() {    //This just makes it easier to read
+        formatPanel.setLayout(new GridLayout(2, 0));
+        
+        add(new JLabel("File format:"));
+        
+        formatPanel.add(osp);
+        format.add(osp);
+        osp.setSelected(true);
+        formatPanel.add(png);
+        format.add(png);
+        formatPanel.add(jpeg);
+        format.add(jpeg);
+        formatPanel.add(gif);
+        format.add(gif);
+    }
+    
     public CreateDrawing() {
         super("New Drawing");
         GridLayout test = new GridLayout(0, 2);
         setLayout(new GridLayout(0, 2));
         
-        add(new JLabel("Filename: "));
+        //Filename label
+        add(new JLabel("Filename:"));
         add(fileName);
+        
+        //Format selector
+        makeFormatPanel();
+        add(formatPanel);
         
         //Blank spaces
         if (getComponentCount() / 2 * 2 != getComponentCount()) {   //Check if it's odd.
